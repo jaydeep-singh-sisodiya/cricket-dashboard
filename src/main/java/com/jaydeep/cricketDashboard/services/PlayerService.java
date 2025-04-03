@@ -14,9 +14,9 @@ import com.jaydeep.cricketDashboard.repository.PlayerRepository;
 public class PlayerService {
 	@Autowired
 	PlayerRepository repository;
-	
+
 	public Player addPlayer(Player player) {
-		return(repository.save(player));
+		return (repository.save(player));
 	}
 
 	public List<Player> allPlayers() {
@@ -31,20 +31,20 @@ public class PlayerService {
 
 	public List<Player> getPlayerByTeam(String team) {
 		List<Player> playerList = repository.findByTeam(team);
-		
+
 		return playerList;
 	}
-	
+
 	public List<Player> getPlayerByNameAndTeam(String name, String team) {
 		List<Player> playerList = repository.findByNameAndTeam(name, team);
-		
+
 		return playerList;
 	}
 
 	public List<Statistics> getPlayerByStats(String name) {
-		List<Player> playerList = repository.findByNameLike("%" + name +"%");
-		List<Statistics> statList= new ArrayList<>();
-		for(Player p : playerList) {
+		List<Player> playerList = repository.findByNameLike("%" + name + "%");
+		List<Statistics> statList = new ArrayList<>();
+		for (Player p : playerList) {
 			statList.add(p.getStatistics());
 		}
 		return statList;
